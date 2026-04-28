@@ -1,0 +1,378 @@
+.navbar {
+  width: 100%;
+  background: linear-gradient(135deg, #e75480 0%, #d12c6b 100%);
+  padding: 0;
+  box-shadow: 0 2px 10px rgba(209, 44, 107, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 70px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 40px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-logo {
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  filter: brightness(0) invert(1);
+}
+
+.nav-logo:hover {
+  transform: scale(1.02);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-profile-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-profile-container:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.nav-profile {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-text {
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: 0.3px;
+}
+
+/* ========== ENHANCED RESPONSIVE STYLES ========== */
+
+/* Large Desktop (1200px and above) */
+@media (min-width: 1200px) {
+  .nav-container {
+    max-width: 1280px;
+    padding: 0 40px;
+  }
+}
+
+/* Desktop (1024px to 1199px) */
+@media (max-width: 1199px) and (min-width: 1025px) {
+  .nav-container {
+    max-width: 95%;
+    padding: 0 30px;
+  }
+  
+  .nav-logo {
+    width: 140px;
+  }
+}
+
+/* Small Desktop / Large Tablet (992px to 1024px) */
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 0 30px;
+  }
+  
+  .nav-logo {
+    width: 135px;
+  }
+  
+  .nav-profile {
+    width: 33px;
+    height: 33px;
+  }
+  
+  .profile-text {
+    font-size: 13px;
+  }
+  
+  .nav-profile-container {
+    padding: 7px 15px;
+    gap: 9px;
+  }
+}
+
+/* Tablet (768px to 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .navbar {
+    height: 65px;
+  }
+  
+  .nav-container {
+    padding: 0 25px;
+  }
+  
+  .nav-logo {
+    width: 130px;
+  }
+  
+  .nav-profile {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .profile-text {
+    font-size: 13px;
+  }
+  
+  .nav-profile-container {
+    padding: 6px 14px;
+    gap: 8px;
+  }
+}
+
+/* Mobile Landscape (640px to 767px) */
+@media (max-width: 767px) {
+  .navbar {
+    height: 60px;
+  }
+  
+  .nav-container {
+    padding: 0 20px;
+  }
+  
+  .nav-logo {
+    width: 120px;
+  }
+  
+  .nav-profile {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .profile-text {
+    font-size: 12px;
+  }
+  
+  .nav-profile-container {
+    padding: 6px 12px;
+    gap: 8px;
+  }
+}
+
+/* Mobile Portrait (480px to 639px) */
+@media (max-width: 639px) {
+  .navbar {
+    height: 56px;
+  }
+  
+  .nav-container {
+    padding: 0 16px;
+  }
+  
+  .nav-logo {
+    width: 110px;
+  }
+  
+  .nav-profile {
+    width: 28px;
+    height: 28px;
+    border-width: 1.5px;
+  }
+  
+  .profile-text {
+    font-size: 12px;
+  }
+  
+  .nav-profile-container {
+    padding: 5px 12px;
+    gap: 7px;
+  }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  .navbar {
+    height: 54px;
+  }
+  
+  .nav-container {
+    padding: 0 14px;
+  }
+  
+  .nav-logo {
+    width: 100px;
+  }
+  
+  .nav-profile {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .profile-text {
+    display: none; /* Hide text on very small screens to save space */
+  }
+  
+  .nav-profile-container {
+    padding: 5px 10px;
+    gap: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Show tooltip on hover for better UX on desktop */
+  .nav-profile-container:hover::after {
+    content: 'Account';
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-top: 5px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1001;
+  }
+}
+
+/* Extra Small Mobile (up to 380px) */
+@media (max-width: 380px) {
+  .navbar {
+    height: 50px;
+  }
+  
+  .nav-container {
+    padding: 0 12px;
+  }
+  
+  .nav-logo {
+    width: 90px;
+  }
+  
+  .nav-profile {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .nav-profile-container {
+    padding: 4px 8px;
+  }
+}
+
+/* Very Small Mobile (up to 320px) */
+@media (max-width: 320px) {
+  .navbar {
+    height: 48px;
+  }
+  
+  .nav-container {
+    padding: 0 10px;
+  }
+  
+  .nav-logo {
+    width: 85px;
+  }
+  
+  .nav-profile {
+    width: 24px;
+    height: 24px;
+    border-width: 1px;
+  }
+  
+  .nav-profile-container {
+    padding: 4px 7px;
+  }
+}
+
+/* Touch-friendly improvements for mobile devices */
+@media (hover: none) and (pointer: coarse) {
+  .nav-profile-container {
+    min-width: 44px; /* Better touch target */
+    min-height: 44px;
+    justify-content: center;
+  }
+  
+  .nav-logo {
+    min-height: 40px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .navbar {
+    height: 50px;
+  }
+  
+  .nav-profile {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .profile-text {
+    font-size: 12px;
+  }
+  
+  .nav-profile-container {
+    padding: 4px 12px;
+  }
+}
+
+/* Smooth transitions for responsive changes */
+.navbar,
+.nav-container,
+.nav-logo,
+.nav-profile,
+.nav-profile-container,
+.profile-text {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Accessibility - Focus states */
+.nav-logo:focus,
+.nav-profile-container:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Optional: Add a subtle animation when navbar loads */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar {
+  animation: slideDown 0.4s ease-out;
+}
