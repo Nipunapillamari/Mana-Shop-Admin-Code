@@ -1,8 +1,24 @@
 .admin{
    display: flex; 
 }
+.admin-content {
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+}
+
+
 @media(max-width:800px){
     .admin{
         flex-direction: column;
     }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .admin-content {
+        width: 100%;
+    }
 }
+
