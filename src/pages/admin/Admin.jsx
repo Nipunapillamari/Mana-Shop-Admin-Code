@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import Sidebar from '../../components/sidebar'
+import Sidebar from '../../components/sidebar/Sidebar'
 import AddProduct from '../../components/addproduct'
 import Dashboard from '../../components/dashboard'
 import SuperCat from '../../components/supercategory'
