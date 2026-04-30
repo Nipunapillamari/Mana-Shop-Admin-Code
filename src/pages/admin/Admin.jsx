@@ -5,6 +5,7 @@ import Dashboard from '../../components/dashboard/Dashboard'
 import SuperCat from '../../components/supercategory/SuperCat'
 import Category from '../../components/category/Category'
 import SubCat from '../../components/subcategory/SubCat'
+import ListProduct from "../../components/listproduct/ListProduct"
 
 const Admin = () => {
   return (
