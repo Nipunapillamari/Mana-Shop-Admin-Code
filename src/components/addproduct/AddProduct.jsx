@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./AddProduct.css";
 import upload_area from "../../assets/upload_area.svg";
 import axios from 'axios';
+import config from "../../config"
 
 const AddProduct = () => {
   const [image, setImage] = useState(false);
@@ -66,7 +67,7 @@ const AddProduct = () => {
   const fetchSuperCategories = async () => {
     setLoading(prev => ({ ...prev, super: true }));
     try {
-      const res = await axios.get("http://localhost:4000/allsupercategories");
+      const res = await axios.get(`${API}/allsupercategories`);
       const superCats = res.data;
       setSuperCategories(superCats);
 
@@ -91,7 +92,7 @@ const AddProduct = () => {
 
     setLoading(prev => ({ ...prev, category: true }));
     try {
-      const res = await axios.get(`http://localhost:4000/categories/${superCategoryId}`);
+      const res = await axios.get(`${API}/categories/${superCategoryId}`);
       const cats = res.data;
       setCategories(cats);
 
@@ -121,7 +122,7 @@ const AddProduct = () => {
 
     setLoading(prev => ({ ...prev, sub: true }));
     try {
-      const res = await axios.get(`http://localhost:4000/subcategories/${categoryId}`);
+      const res = await axios.get(`${API}/subcategories/${categoryId}`);
       const subs = res.data;
       setSubCategories(subs);
 
@@ -153,7 +154,7 @@ const AddProduct = () => {
     formData.append("product", file);
 
     try {
-      const res = await fetch("http://localhost:4000/upload", {
+      const res = await fetch(`${API}/upload`, {
         method: "POST",
         body: formData,
       });
@@ -259,7 +260,7 @@ const AddProduct = () => {
       };
 
       // Add product
-      const addResponse = await fetch("http://localhost:4000/addproduct", {
+      const addResponse = await fetch(`${API}/addproduct`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

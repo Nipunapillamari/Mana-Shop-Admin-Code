@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import './SubCat.css';
+import config from "../../config"
+
 
 const SubCat = () => {
   const [subCategory, setSubCategory] = useState({
@@ -25,7 +27,7 @@ const SubCat = () => {
 
   const fetchSuperCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/allsupercategories");
+      const res = await axios.get(`${API}/allsupercategories`);
       setSuperCategories(res.data);
     } catch (err) {
       console.error(err);
@@ -41,19 +43,19 @@ const SubCat = () => {
       let allSubCategories = [];
       
       // Get all super categories first
-      const superRes = await axios.get("http://localhost:4000/allsupercategories");
+      const superRes = await axios.get(`${API}/allsupercategories`);
       const superCats = superRes.data;
       
       // For each super category, get its categories
       for (const superCat of superCats) {
         try {
-          const categoriesRes = await axios.get(`http://localhost:4000/categories/${superCat._id}`);
+          const categoriesRes = await axios.get(`${API}/categories/${superCat._id}`);
           const cats = categoriesRes.data;
           
           // For each category, get its subcategories
           for (const cat of cats) {
             try {
-              const subRes = await axios.get(`http://localhost:4000/subcategories/${cat._id}`);
+              const subRes = await axios.get(`${API}/subcategories/${cat._id}`);
               const subs = subRes.data.map(sub => ({
                 id: sub._id,
                 name: sub.name,
@@ -88,7 +90,7 @@ const SubCat = () => {
   const fetchCategoriesAsSubCategories = async () => {
     try {
       // Get all super categories
-      const superRes = await axios.get("http://localhost:4000/allsupercategories");
+      const superRes = await axios.get(`${API}/allsupercategories`);
       const superCats = superRes.data;
       
       let allCategories = [];
@@ -96,7 +98,7 @@ const SubCat = () => {
       // Get categories for each super category
       for (const superCat of superCats) {
         try {
-          const categoriesRes = await axios.get(`http://localhost:4000/categories/${superCat._id}`);
+          const categoriesRes = await axios.get(`${API}/categories/${superCat._id}`);
           const cats = categoriesRes.data.map(cat => ({
             id: cat._id,
             name: cat.name,
@@ -131,7 +133,7 @@ const SubCat = () => {
 
   const fetchCategoriesBySuperCategory = async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/categories/${subCategory.superCategoryId}`);
+      const res = await axios.get(`${API}/categories/${subCategory.superCategoryId}`);
       setCategories(res.data);
     } catch (err) {
       console.error(err);
@@ -184,7 +186,7 @@ const SubCat = () => {
         metaKeywords: subCategory.metaKeywords || `${subCategory.name}, products, shopping`
       };
 
-      await axios.post("http://localhost:4000/addsubcategory", subCategoryData);
+      await axios.post(`${API}/addsubcategory`, subCategoryData);
       
       alert('Sub Category added successfully!');
       
@@ -203,7 +205,7 @@ const SubCat = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this sub category?')) {
       try {
-        await axios.post("http://localhost:4000/deletesubcategory", { id });
+        await axios.post(`${API}/deletesubcategory`, { id });
         setSubCategories(prev => prev.filter(cat => cat.id !== id));
         alert('Sub Category deleted successfully!');
       } catch (error) {

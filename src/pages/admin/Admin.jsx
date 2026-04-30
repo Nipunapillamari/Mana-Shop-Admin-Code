@@ -1,3 +1,11 @@
+import { Routes, Route } from 'react-router-dom'
+import Sidebar from '../../components/sidebar'
+import AddProduct from '../../components/addproduct'
+import Dashboard from '../../components/dashboard'
+import SuperCat from '../../components/supercategory'
+import Category from '../../components/category/Category'
+import SubCat from '../../components/subcategory/SubCat'
+
 const Admin = () => {
   return (
     <div className='admin'>
@@ -16,3 +24,5 @@ const Admin = () => {
     </div>
   )
 }
+
+export default Admin

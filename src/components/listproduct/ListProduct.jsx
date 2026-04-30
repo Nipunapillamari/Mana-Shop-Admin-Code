@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "./ListProduct.css";
 import cross_icon from "../../assets/cross_icon.png";
-// Remove this line: import edit_icon from "../../assets/edit_icon.png";
+import config from "../../config"
+
 
 const ListProduct = () => {
   const [allproduct, setallproduct] = useState([]);
@@ -25,7 +26,7 @@ const ListProduct = () => {
   const fetchinfo = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:4000/allproducts");
+      const response = await fetch(`${API}/allproducts`);
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }
@@ -46,7 +47,7 @@ const ListProduct = () => {
   const removeproduct = async (id) => {
     if (window.confirm('Are you sure you want to remove this product?')) {
       try {
-        await fetch("http://localhost:4000/removeproduct", {
+        await fetch(`${API}/removeproduct`, {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -87,7 +88,7 @@ const ListProduct = () => {
 
     setUploadingImage(true);
     try {
-      const response = await fetch("http://localhost:4000/upload", {
+      const response = await fetch(`${API}/upload`, {
         method: 'POST',
         body: formData,
       });
@@ -108,7 +109,7 @@ const ListProduct = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch("http://localhost:4000/updateproduct", {
+      const response = await fetch(`${API}/updateproduct`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

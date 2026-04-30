@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./SuperCat.css";
+import config from "../../config"
+
 
 const SuperCat = () => {
   // ---------------- FORM STATE ----------------
@@ -24,7 +26,7 @@ const SuperCat = () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        "http://localhost:4000/allsupercategories"
+        `${API}/allsupercategories`
       );
       setSuperCategories(res.data);
     } catch (error) {
@@ -65,7 +67,7 @@ const SuperCat = () => {
     }
 
     try {
-      await axios.post("http://localhost:4000/addsupercategory", {
+      await axios.post(`${API}/addsupercategory`, {
         name: superCategory.name.trim(),
         metaTitle: superCategory.metaTitle.trim(),
         metaDescription: superCategory.metaDescription.trim(),
@@ -86,7 +88,7 @@ const SuperCat = () => {
       return;
 
     try {
-      await axios.post("http://localhost:4000/deletesupercategory", { id });
+      await axios.post(`${API}/deletesupercategory`, { id });
       fetchSuperCategories();
     } catch (error) {
       alert("Failed to delete super category");

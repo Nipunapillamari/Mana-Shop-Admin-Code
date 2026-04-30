@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Category.css';
+import config from "../../config"
+
 
 const Category = () => {
   const [category, setCategory] = useState({
@@ -32,7 +34,7 @@ const Category = () => {
 
   const fetchSuperCategories = async () => {
     try {
-      const res = await axios.get('http://localhost:4000/allsupercategories');
+      const res = await axios.get(`${API}/allsupercategories`);
       setSuperCategories(res.data);
     } catch (err) {
       console.error(err);
@@ -43,7 +45,7 @@ const Category = () => {
   const fetchAllCategories = async () => {
     try {
       // First, get all super categories
-      const superRes = await axios.get('http://localhost:4000/allsupercategories');
+      const superRes = await axios.get(`${API}/allsupercategories`);
       const superCategoriesData = superRes.data;
       
       // Fetch categories for each super category
@@ -52,7 +54,7 @@ const Category = () => {
       for (const superCat of superCategoriesData) {
         try {
           const res = await axios.get(
-            `http://localhost:4000/categories/${superCat._id}`
+            `${API}/categories/${superCat._id}`
           );
           
           const formattedCategories = res.data.map(cat => ({
@@ -84,7 +86,7 @@ const Category = () => {
   const fetchCategories = async (superCategoryId) => {
     try {
       const res = await axios.get(
-        `http://localhost:4000/categories/${superCategoryId}`
+        `${API}/categories/${superCategoryId}`
       );
 
       const superCat = superCategories.find(s => s._id === superCategoryId);
@@ -151,7 +153,7 @@ const Category = () => {
     }
 
     try {
-      await axios.post('http://localhost:4000/addcategory', {
+      await axios.post(`${API}/addcategory`, {
         name: category.name,
         superCategoryId: category.superCategoryId,
         subCategory: true,
@@ -181,7 +183,7 @@ const Category = () => {
     if (!window.confirm('Are you sure you want to delete this category?')) return;
 
     try {
-      await axios.post('http://localhost:4000/deletecategory', { id });
+      await axios.post(`${API}/deletecategory`, { id });
       
       // Refresh the category list after deletion
       if (superCategoryId) {
