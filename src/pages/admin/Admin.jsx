@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import Sidebar from '../../components/sidebar/Sidebar'
-import AddProduct from '../../components/addproduct'
-import Dashboard from '../../components/dashboard'
-import SuperCat from '../../components/supercategory'
+import AddProduct from '../../components/addproduct/AddProduct'
+import Dashboard from '../../components/dashboard/Dashboard'
+import SuperCat from '../../components/supercategory/SuperCat'
 import Category from '../../components/category/Category'
 import SubCat from '../../components/subcategory/SubCat'
 
