@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./ListProduct.css";
 import cross_icon from "../../assets/cross_icon.png";
-import config from "../../config"
+import API from "../../config"
 
 
 const ListProduct = () => {

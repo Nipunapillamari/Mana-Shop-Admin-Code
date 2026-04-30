@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Category.css';
-import config from "../../config"
+import API from "../../config"
 
 
 const Category = () => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import './SubCat.css';
-import config from "../../config"
+import API from "../../config"
 
 
 const SubCat = () => {

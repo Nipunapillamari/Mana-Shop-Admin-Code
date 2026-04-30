@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./AddProduct.css";
 import upload_area from "../../assets/upload_area.svg";
 import axios from 'axios';
-import config from "../../config"
+import API from "../../config"
 
 const AddProduct = () => {
   const [image, setImage] = useState(false);
